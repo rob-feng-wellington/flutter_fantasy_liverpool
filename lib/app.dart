@@ -6,5 +6,12 @@ class MyApp extends StatefulWidget {
 
   MyApp({@required this.repository});
 
-  
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  AppState appState = AppState.loading();
 }
