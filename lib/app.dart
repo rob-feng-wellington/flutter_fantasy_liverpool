@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/repository/core_repository.dart';
 
+import 'models.dart';
+
 class MyApp extends StatefulWidget {
   final AppRepository repository;
 
@@ -14,4 +16,21 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   AppState appState = AppState.loading();
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.repository.loadSquad().then((squad) {
+      setState((){
+        appState = AppState(
+          squad: squad.map(Player.fromEntity).toList()
+        );
+      });
+    }).catchError((err) {
+      setState((){
+        appState.isLoading = false;
+      });
+    });
+  }
 }
