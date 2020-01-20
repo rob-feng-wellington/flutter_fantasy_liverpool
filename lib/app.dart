@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/localization.dart';
 import 'package:my_app/repository/core_repository.dart';
 
 import 'models.dart';
+import 'theme.dart';
 
 class MyApp extends StatefulWidget {
   final AppRepository repository;
@@ -32,5 +34,18 @@ class MyAppState extends State<MyApp> {
         appState.isLoading = false;
       });
     });
+  }
+
+  @override 
+  Widget build(BuildContext context) {
+    return MarterialApp(
+      onGenerateTitle: (context) => MyAppLocalizations.of(context).appTitle,
+      theme: ArchTheme.theme,
+      LocalizationsDelegates: [
+        ArchLocalizationsDelegate(),
+        MyAppLocalizationsDelegate(),
+      ]
+
+    )
   }
 }
