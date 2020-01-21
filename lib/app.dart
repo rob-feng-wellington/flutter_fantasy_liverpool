@@ -38,14 +38,20 @@ class MyAppState extends State<MyApp> {
 
   @override 
   Widget build(BuildContext context) {
-    return MarterialApp(
+    return MaterialApp(
       onGenerateTitle: (context) => MyAppLocalizations.of(context).appTitle,
       theme: ArchTheme.theme,
-      LocalizationsDelegates: [
+      localizationsDelegates: [
         ArchLocalizationsDelegate(),
         MyAppLocalizationsDelegate(),
-      ]
-
-    )
+      ],
+      routes: {
+        ArchRoutes.home: (context) {
+          return HomeScreen(
+            appState: appState
+          );
+        }
+      }
+    );
   }
 }
