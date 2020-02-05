@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/localization.dart';
 import 'package:my_app/repository/core_repository.dart';
+import 'package:my_app/screens/home_screen.dart';
 
 import 'models.dart';
+import 'routes.dart';
 import 'theme.dart';
 
 class MyApp extends StatefulWidget {
